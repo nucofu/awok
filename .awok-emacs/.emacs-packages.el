@@ -28,19 +28,36 @@
 ;; magit setup
 (use-package magit)
 
+;; pyvenv
+(use-package pyvenv
+  :init
+  (pyvenv-activate "/home/tutu/.config/lvenv/") ; lvenv is acronym of "local virtual environtment"
+
+  :bind ("s-v" . pyvenv-mode))
+
+;; flycheck setup
+(use-package flycheck)
+
 ;; lsp-mode setup
 (setq lsp-keymap-prefix "s-l")
 (use-package lsp-mode
-  :hook ((c-mode c++-mode python-mode) . lsp-deferred)
+  :hook ((c-mode c++-mode python-mode php-mode) . lsp-deferred)
   :commands lsp
+  
   :init
-  (setq lsp-idle-delay 1.1
-        lsp-enable-indentation nil
-        lsp-enable-on-type-formatting nil
-        c-basic-offset 4)
+  (setq lsp-idle-delay 0.7)
+  (setq lsp-enable-indentation nil)
+  (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-keep-workspace-alive nil)
+  (setq lsp-completion-provider :capf)
+  (setq lsp-diagnostics-provider :flycheck)
+  
   :config
-  (setq lsp-clients-clangd-executable "/usr/bin/clangd-19")
-  (setq lsp-pylsp-server-command '("/usr/bin/pylsp")))
+  (setq lsp-clients-clangd-executable "/usr/bin/clangd")
+  (setq lsp-pylsp-server-command '("pylsp")
+        lsp-pylsp-plugins-pylint-enabled t
+        lsp-pylsp-plugins-pycodestyle-enabled t))
+
 (global-set-key (kbd "s-c l") #'lsp)
 
 (use-package lsp-ivy
@@ -48,11 +65,22 @@
 
 ;; completation anything
 (use-package company
-  :init (add-hook 'after-init-hook 'global-company-mode))
+  :after (lsp-mode)
+
+  :init
+  (global-company-mode)
+  (define-key company-mode-map (kbd "<tab>") 'company-indent-or-complete-common)
+
+  :config
+  (setq company-backends '(company-capf company-dabbrev)))
 
 ;; for multiple cursors purpose
 (use-package multiple-cursors
   :bind (("C-c m" . mc/edit-lines)
-         ("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)
-	     ("C-c C-m" . mc/mark-all-like-this)))
+         ("C-c C-m" . mc/mark-all-like-this))
+         ("s->" . mc/mark-next-like-this)
+         ("s-<" . mc/mark-previous-like-this)
+         ("s-<next>" . mc/skip-to-next-like-this)
+         ("s-<prior>" . mc/skip-to-previous-like-this)
+         ("C-s->" . mc/unmark-previous-like-this)
+         ("C-s-<" . mc/unmark-next-like-this))

@@ -9,6 +9,8 @@
 (setq-default indent-tabs-mode nil) ; indentation using space
 (setq-default tab-width 4) ; ukuran 4 spasi
 (setq-default standard-indent 4) ; default offset
+(setq c-basic-offset 4) ; default indentation of c/c++ language
+(setq python-indent-offset 4) ; default indentation of python language
 
 ;; key binding
 (setq grep-command "grep -rn ")
