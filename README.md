@@ -8,12 +8,15 @@
 ### Instalation
 
 install this package
-```debian
+
+**Debian**
+```
 sudo apt install clangd-19 python3 python3-pylsp python3-pylint-common
 ```
 
-```void
-sudo xbps-install clang-19 clang-tools-extra19 python3-pylint python3-lsp-server
+**Void**
+```
+sudo xbps-install clang-19 clang-tools-extra19 python3 python3-pylint python3-lsp-server
 ```
 
 clone this code into your home
@@ -32,9 +35,9 @@ you can remove README.md after that
 #### Multiple Cursor
 - **C-c m**       = mc/edit-lines
 - **C-c C-m**     = mc/mark-all-like-this
-- **s-\>**        = mc/mark-next-like-this
-- **s-\<**        = mc-mark-previous-like-this
-- **C-s-\<**      = mc/unmark-next-like-this
-- **C-s-\>**      = mc-unmark-previous-like-this
+- **s\-\>**        = mc/mark-next-like-this
+- **s-<**        = mc-mark-previous-like-this
+- **C-s-<**      = mc/unmark-next-like-this
+- **C-s\-\>**      = mc-unmark-previous-like-this
 - **s-\<next\>**  = mc/skip-to-next-like-this
 - **s-\<prior\>** = mc-skip-to-previous-like-this
