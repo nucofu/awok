@@ -56,7 +56,7 @@
 
   :init
   (global-company-mode)
-
+  
   :config
   (setq company-backends '((company-capf company-dabbrev company-yasnippet))))
 

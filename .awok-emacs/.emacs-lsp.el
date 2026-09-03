@@ -16,7 +16,7 @@
   (setq lsp-diagnostics-provider :flycheck)
 
   :config
-  (setq lsp-clients-clangd-executable "/usr/bin/clangd")
+  (setq lsp-clients-clangd-executable "clangd")
   (setq lsp-pylsp-plugins-pylint-enabled t
         lsp-pylsp-plugins-pycodestyle-enabled t))
 

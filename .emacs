@@ -10,7 +10,6 @@
 (setq-default indent-tabs-mode nil) ; indentation using space
 (setq-default tab-width 4) ; ukuran 4 spasi
 (setq-default standard-indent 4) ; default offset
-(setq c-basic-offset 4) ; default c indentation
 
 ;; key binding
 (setq grep-command "grep -rn ")
@@ -23,7 +22,9 @@
 (scroll-bar-mode -1)
 (global-display-line-numbers-mode t)
 (setq dired-kill-when-opening-new-dired-buffer t)
-(put 'upcase-region 'disabled nil) ;; ngahalangan undo
+(setq make-backup-files nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil) 
 
 ;; package configuration
 (load-file "~/.awok-emacs/.emacs-packages.el")
