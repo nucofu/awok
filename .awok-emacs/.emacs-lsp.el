@@ -1,10 +1,10 @@
 ;; lsp-mode setup
 
-(dolist (mode-list '(cc-mode python-mode php-mode sass-mode scss-mode js2-mode typescript-mode web-mode))
+(dolist (mode-list '(cc-mode python-mode))
   (unless (package-installed-p mode-list) (package-install mode-list)))
 
 (use-package lsp-mode
-  :hook ((c-mode c++-mode python-mode php-mode html-mode css-mode sass-mode scss-mode js-mode typescript-mode web-mode) . lsp-deferred)
+  :hook ((c-mode c++-mode python-mode) . lsp-deferred)
   :commands lsp
 
   :init
@@ -16,7 +16,7 @@
   (setq lsp-diagnostics-provider :flycheck)
 
   :config
-  (setq lsp-clients-clangd-executable "/usr/bin/clangd")
+  (setq lsp-clients-clangd-executable "clangd")
   (setq lsp-pylsp-plugins-pylint-enabled t
         lsp-pylsp-plugins-pycodestyle-enabled t))
 

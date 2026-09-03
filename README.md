@@ -2,7 +2,6 @@
 - adding exec-path-from-shell
 - adding yasnippet and yasnippet-snippet
 - adding company-yasnippet
-- adding new lsp intelephense, html-ls, css-ls, ts-ls
 - removing some keybind
 - removing default indentation for c and python
 - seperating lsp configuration into a diffrent file
@@ -21,12 +20,6 @@ sudo apt install clangd-19 python3 python3-pylsp python3-pylint-common
 **Void**
 ```
 sudo xbps-install clang-19 clang-tools-extra19 python3 python3-pylint python3-lsp-server
-```
-
-Intelephense, html-ls, css-ls, ts-ls
-
-```
-npm i -g intelephense vscode-langservers-extracted typescript-language-servers
 ```
 
 *clone this code, move it into $HOME directory without "README.md" and ".git"
